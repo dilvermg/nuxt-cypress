@@ -1,0 +1,64 @@
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  #screen-loader {
+    width: 100vw;
+    height: 100vh;
+    background: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5000;
+  }
+
+  .loading-logo {
+    width: 105px;
+    height: auto;
+    margin-bottom: 45px;
+  }
+
+  .loading-logo img {
+    display: block;
+    margin: auto;
+  }
+
+  .circle-loader {
+    margin: auto;
+    width: 38px;
+    height: 38px;
+    border-width: 3px;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: #e2e8f0;
+    border-bottom-color: #2A1E4F;
+    animation: rotate-circle 0.4s linear infinite;
+  }
+
+  @keyframes rotate-circle {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(1turn);
+    }
+  }
+</style>
+
+<div id="screen-loader">
+  <div>
+    <div class="loading-logo">
+      <img src="https://d1hazhe1glojgw.cloudfront.net/iso_talently_blue_fondo_transparente_3_157fcbd90a.png?v2" alt="Logo" width="64">
+    </div>
+    <div class="loading">
+      <div class="circle-loader"></div>
+    </div>
+  </div>
+</div>
