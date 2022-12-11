@@ -1,0 +1,37 @@
+name: testing
+
+on:
+  pull_request:
+    branches: ['*']
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: develop
+      url: https://test.example.tech
+
+    steps:
+      - name: Checkout 🛎
+        uses: actions/checkout@master
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+
+      - name: Cypress run 🏃🏻
+        uses: cypress-io/github-action@v5
+        timeout-minutes: 10
+        with:
+          build: npm run generate
+          start: npm run start
+          browser: chrome
+          headless: true
+          record: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          CYPRESS_PROJECT_ID: ${{ secrets.CYPRESS_PROJECT_ID }}
+          NUXT_ENV_API: ${{ secrets.NUXT_ENV_API }}
+          NUXT_ENV_PORT: ${{ secrets.NUXT_ENV_PORT }}
